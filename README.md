@@ -6,11 +6,17 @@ Download EXE [here](https://github.com/OppaiEcchi/DownloaderConverterCutter/rele
 
 ffmpeg:  https://ffmpeg.org/download.html#build-windows
 (recommended version: "gyan.dev" "ffmpeg-release-full") get 7zip for that
+
 yt-dlp: https://github.com/yt-dlp/yt-dlp
+
 streamlink: https://streamlink.github.io/
+
 fanbox-dl: https://github.com/hareku/fanbox-dl
+
 mpc: https://codecguide.com/download_k-lite_codec_pack_mega.htm
+
 vlc: https://www.videolan.org/vlc/
+
 cookies converter: https://raw.githubusercontent.com/dandv/convert-chrome-cookies-to-netscape-format/master/convert-cookies.js
 
 =========================preparing required programs=========================
