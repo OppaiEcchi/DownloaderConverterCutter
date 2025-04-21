@@ -34,6 +34,13 @@ def buttoncut_press():
     except:
         print("could not execute command")
 
+def buttonconcat_press():
+    outputconcat = entryconcat2.get()
+    try:
+        os.system('cmd /c ffmpeg -safe 0 -f concat -i list.txt -c copy "'+(outputconcat)+'"')
+    except:
+        print("could not execute command")
+
 def buttonytdlp1_press():
     ytdlplink = entryytdlp.get()
     try:
@@ -114,6 +121,7 @@ notebook = ttk.Notebook(window)
 
 tabconv = Frame(notebook, padx=10, pady=10,bg="#696969")
 tabcut = Frame(notebook, padx=10, pady=10,bg="#696969")
+tabconcat = Frame(notebook, padx=10, pady=10,bg="#696969")
 tabytdlp = Frame(notebook, padx=10, pady=10,bg="#696969")
 tabtwtcst = Frame(notebook, padx=10, pady=10,bg="#696969")
 tabstrlnk = Frame(notebook, padx=10, pady=10,bg="#696969")
@@ -122,6 +130,7 @@ info = Frame(notebook, padx=10, pady=10,bg="#696969")
 
 notebook.add(tabconv,text="converter")
 notebook.add(tabcut,text="cutter")
+notebook.add(tabconcat,text="concatenate")
 notebook.add(tabytdlp,text="yt-dlp")
 notebook.add(tabtwtcst,text="twitcasting")
 notebook.add(tabstrlnk,text="streamlink")
@@ -151,6 +160,14 @@ framecut4 = Frame(tabcut,bg="#696969")
 framecut4.pack(anchor=W)
 framecut5 = Frame(tabcut,bg="#696969")
 framecut5.pack(anchor=W)
+frameconcat1 = Frame(tabconcat,bg="#696969")
+frameconcat1.pack(anchor=W)
+frameconcat2 = Frame(tabconcat,bg="#696969")
+frameconcat2.pack(anchor=W)
+frameconcat3 = Frame(tabconcat,bg="#696969")
+frameconcat3.pack(anchor=W)
+frameconcat4 = Frame(tabconcat,bg="#696969")
+frameconcat4.pack(anchor=W)
 frameytdlp1 = Frame(tabytdlp,bg="#696969")
 frameytdlp1.pack(anchor=W)
 frameytdlp2 = Frame(tabytdlp,bg="#696969")
@@ -220,6 +237,17 @@ labelcut4.pack(side="right")
 entrycut4 = Entry(framecut4,width=20,font=("gothic",9),bg="#696969",fg="#000000")
 entrycut4.pack(side="left")
 
+labelconcat1 = Label(frameconcat1,text="Input File List(txt)",font=("gothic",10),bg="#696969",fg="#000000")
+labelconcat1.pack(side="right")
+entryconcat1 = Entry(frameconcat1,width=20,font=("gothic",9),bg="#696969",fg="#000000")
+entryconcat1.pack(side="left")
+labelconcat1 = Label(frameconcat2,text="example line for the list (file 'filename.extension' )",font=("gothic",10),bg="#696969",fg="#000000")
+labelconcat1.pack(side="right")
+labelconcat2 = Label(frameconcat3,text="Output File(with extention)",font=("gothic",10),bg="#696969",fg="#000000")
+labelconcat2.pack(side="right")
+entryconcat2 = Entry(frameconcat3,width=20,font=("gothic",9),bg="#696969",fg="#000000")
+entryconcat2.pack(side="left")
+
 labelytdlp1 = Label(frameytdlp1,text="Video link",font=("gothic",10),bg="#696969",fg="#000000")
 labelytdlp1.pack(side="right")
 entryytdlp = Entry(frameytdlp1,width=20,font=("gothic",9),bg="#696969",fg="#000000")
@@ -275,6 +303,9 @@ buttonconv2.pack(side="left")
 
 buttoncut = Button (framecut5,text="Cut",command=buttoncut_press,font=("gothic",9),width=19,bg="#696969",fg="#000000",activebackground="#696969",activeforeground="#000000")
 buttoncut.pack(side="left")
+
+buttonconcat = Button (frameconcat4,text="Concatenate",command=buttonconcat_press,font=("gothic",9),width=19,bg="#696969",fg="#000000",activebackground="#696969",activeforeground="#000000")
+buttonconcat.pack(side="left")
 
 labelytdlp2 = Label(frameytdlp2,text="w/o Cookies",font=("gothic",10),bg="#696969",fg="#000000")
 labelytdlp2.pack(side="right")
@@ -393,19 +424,34 @@ infotext = "====================================links===========================
            "============================how to use functions============================\n" \
            "\n" \
            "\"converter\":\n" \
+           "uses ffmpeg\n" \
            "for \"Video to Video\", type in input and output file name(with extension)\n" \
            "for \"Video to mp3\", do the same with input file\n" \
            "but for the output just type in the name, it will be in mp3 anyway.\n" \
            "NOTE: place input files in the same directory where this tool is\n" \
            "\n" \
            "\"cutter\":\n" \
+           "uses ffmpeg\n" \
            "input and output just like in \"Video to Video\" in \"converter\"\n" \
            "for start and end times, type in the beginning and the end time of the clip\n" \
            "in format \"hh:mm:ss\" or \"hh:mm:ss:ms\"\n" \
            "\"hh\"=hours, \"mm\"=minutes, \"ss\"=seconds, \"ms\"=milliseconds.\n" \
            "NOTE: place input files in the same directory where this tool is\n" \
            "\n" \
+           "\"concatenate\":\n" \
+           "uses ffmpeg\n" \
+           "merge two or more media files\n" \
+           "input file list is name of the .txt file containing the list of input files\n" \
+           "example of what the list should look like\":\n" \
+           "file 'filename.extension' \n" \
+           "file 'filename.extension' \n" \
+           "file 'filename.extension' \n" \
+           "output is similar to output from \"converter\"\n" \
+           "NOTE 1: place input files in the same directory where this tool is\n" \
+           "NOTE 2: (.txt list file and all files from the list inside of it)\n" \
+           "\n" \
            "\"yt-dlp\":\n" \
+           "uses yt-dlp\n" \
            "\"(w/ subtitles)\" will also download \"en\" subtitles in \".srt\" format\n" \
            "\"w/o cookies\", just copy paste the link and download\n" \
            "\"w/ cookies\", for this you need converted cookies in \".txt\" file\n" \
@@ -414,14 +460,14 @@ infotext = "====================================links===========================
            "    right click anywhere on this page and select \"save as\"\n" \
            "    don't change the name\n" \
            "    save it in the same directory where this tool is\n" \
-           "2.open blank file in \"notebook\", \"notepad++\", or any txt editor you have\n" \
+           "2.open blank .txt file in \"notepad\", or any txt editor you have\n" \
            "3.in chrome browser go to the website you want the cookies from\n" \
            "    for youtube just go to https://www.youtube.com\n" \
            "4.press \"F12\" to open \"Developer tools\"\n" \
            "5.go to \"Application\" tab(if you don't see it, just press \">>\" button)\n" \
            "    under \"Storage\" expand \"Cookies\" and select \"https://www.youtube.com\"\n" \
            "    then select all text in the box on the right\n" \
-           "    and copypaste it to the blank file\n" \
+           "    and copypaste it to the blank .txt file created before\n" \
            "6.save the file as \"(yourfilename).txt\", in the directory where this tool is\n" \
            "7.copypaste the name of the txt file(without extension) into the \"Input File\"" \
            "    and press \"Convert\", converted cookies file will have the name\n" \
@@ -429,6 +475,7 @@ infotext = "====================================links===========================
            "now you can download videos with cookies.\n" \
            "\n" \
            "\"twitcasting\":\n" \
+           "uses ffmpeg\n" \
            "1.in chrome browser go to https://www.google.com/ and search for:\n" \
            "    \"What is my User Agent\"\n" \
            "    and copypaste whole line into the \"User Agent\" entrybox\n" \
@@ -437,6 +484,7 @@ infotext = "====================================links===========================
            "3.in output file just type the name, it will be in mp4 format.\n" \
            "\n" \
            "\"streamlink\":\n" \
+           "uses streamlink\n" \
            "\"VLC\" will open the stream in \"VLC\" player\n" \
            "location:\n" \
            "\"C:\Program Files\VideoLAN\VLC\\vlc.exe\"\n" \
@@ -451,6 +499,7 @@ infotext = "====================================links===========================
            "press the \"Download\" button, and it will ask you for download location.\n" \
            "\n" \
            "\"fanbox-dl\":\n" \
+           "uses fanbox-dl\n" \
            "\"Session ID\", this is very similar to cookies for yt-dlp but even easier\n" \
            "1.in chrome browser open Fanbox page(remember to log in)\n" \
            "2.open developer tools(F12) and go to \"Application\" tab\n" \
