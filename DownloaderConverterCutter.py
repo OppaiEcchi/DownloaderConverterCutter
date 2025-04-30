@@ -17,27 +17,27 @@ window.geometry("{}x{}+{}+{}".format(window_width, window_height, z, y))
 def buttonconv1_press():
     inputfileconv, outputfileconv = entryconv1.get(),  entryconv2.get()
     try:
-        os.system('cmd /c ffmpeg -i ' + (inputfileconv) + ' -codec copy ' + (outputfileconv))
+        os.system('cmd /c ffmpeg -i "' + (inputfileconv) + '" -codec copy "' + (outputfileconv) +'"')
     except:
         print("could not execute command")
 def buttonconv2_press():
     inputfileconv, outputfileconv = entryconv1.get(),  entryconv2.get()
     try:
-        os.system('cmd /c ffmpeg -i ' + (inputfileconv) + ' -vn -ar 44100 -ac 2 -ab 128k -f mp3 ' + (outputfileconv) + '.mp3')
+        os.system('cmd /c ffmpeg -i "' + (inputfileconv) + '" -vn -ar 44100 -ac 2 -ab 128k -f mp3 "' + (outputfileconv) + '.mp3"')
     except:
         print("could not execute command")
 
 def buttoncut_press():
     inputcut, starttime, endtime, outputcut = entrycut1.get(), entrycut2.get(), entrycut3.get(), entrycut4.get()
     try:
-        os.system('cmd /c ffmpeg -i "'+(inputcut)+'" -ss '+(starttime)+' -to '+(endtime)+' "'+(outputcut)+'"')
+        os.system('cmd /c ffmpeg -i "' + (inputcut) + '" -ss ' + (starttime) + ' -to ' + (endtime) + ' "' + (outputcut) + '"')
     except:
         print("could not execute command")
 
 def buttonconcat_press():
     outputconcat = entryconcat2.get()
     try:
-        os.system('cmd /c ffmpeg -safe 0 -f concat -i list.txt -c copy "'+(outputconcat)+'"')
+        os.system('cmd /c ffmpeg -safe 0 -f concat -i list.txt -c copy "' + (outputconcat) + '"')
     except:
         print("could not execute command")
 
@@ -69,51 +69,51 @@ def buttonytdlp2sub_press():
 def buttoncookies_press():
     inputcookies = entrycookies.get()
     try:
-        os.system('cmd /c node convert-cookies.js '+(inputcookies)+'.txt > netscape-cookies.txt')
+        os.system('cmd /c node convert-cookies.js "' + (inputcookies) + '.txt" > netscape-cookies.txt')
     except:
         print("could not execute command")
 
 def buttontwtcst_press():
     useragent, twclink, twtoutput = entrytwtcst1.get(), entrytwtcst2.get(), entrytwtcst3.get()
     try:
-        os.system('cmd /c ffmpeg.exe -protocol_whitelist file,http,https,tcp,tls,crypto -user_agent "'+(useragent)+'" -headers "Origin: https://twitcasting.tv/" -i "'+(twclink)+'" -c copy '+(twtoutput)+'.mp4')
+        os.system('cmd /c ffmpeg.exe -protocol_whitelist file,http,https,tcp,tls,crypto -user_agent "' + (useragent) + '" -headers "Origin: https://twitcasting.tv/" -i "' + (twclink) + '" -c copy "' + (twtoutput) + '.mp4"')
     except:
         print("could not execute command")
 
 def buttonstrlnk1_press():
     strlnklink = entrystrlnk2.get()
     try:
-        os.system('cmd /c streamlink --player "C:\Program Files\VideoLAN\VLC\\vlc.exe" '+(strlnklink)+' 1080p')
+        os.system('cmd /c streamlink --player "C:\Program Files\VideoLAN\VLC\\vlc.exe" ' + (strlnklink) + ' 1080p')
     except:
         print("could not execute command")
 def buttonstrlnk2_press():
     strlnklink = entrystrlnk2.get()
     try:
-        os.system('cmd /c streamlink --player "C:\Program Files (x86)\K-Lite Codec Pack\MPC-HC64\mpc-hc64.exe" '+(strlnklink)+' 1080p')
+        os.system('cmd /c streamlink --player "C:\Program Files (x86)\K-Lite Codec Pack\MPC-HC64\mpc-hc64.exe" ' + (strlnklink) + ' 1080p')
     except:
         print("could not execute command")
 def buttonstrlnk3_press():
     strlnklink = entrystrlnk2.get()
     try:
-        os.system('cmd /c streamlink --player "C:\Program Files (x86)\K-Lite Codec Pack\MPC-HC\mpc-hc.exe" '+(strlnklink)+' 1080p')
+        os.system('cmd /c streamlink --player "C:\Program Files (x86)\K-Lite Codec Pack\MPC-HC\mpc-hc.exe" ' + (strlnklink) + ' 1080p')
     except:
         print("could not execute command")
 def buttonstrlnk4_press():
     strlnklink, playerpath = entrystrlnk2.get(), filedialog.askopenfilename()
     try:
-        os.system('cmd /c streamlink --player "'+(playerpath)+'" '+(strlnklink)+' 1080p')
+        os.system('cmd /c streamlink --player "' + (playerpath) + '" ' + (strlnklink) + ' 1080p')
     except:
         print("could not execute command")
 def buttonstrlnk5_press():
     strlnklink, dllocation, filename = entrystrlnk2.get(), filedialog.askdirectory(), entrystrlnk3.get()
     try:
-        os.system('cmd /c streamlink -o "'+(dllocation)+"\\"+(filename)+'" '+(strlnklink)+' 1080p')
+        os.system('cmd /c streamlink -o "' + (dllocation) + "\\"+ (filename) + '" ' + (strlnklink) + ' 1080p')
     except:
         print("could not execute command")
 def buttonfanbox1_press():
     sessid, creator = entryfanbox1.get(), entryfanbox2.get()
     try:
-        os.system('cmd /c fanbox-dl --sessid '+(sessid)+' --save-dir ./content --creator '+(creator)+' --all')
+        os.system('cmd /c fanbox-dl --sessid ' + (sessid) + ' --save-dir ./content --creator ' + (creator) + ' --all')
     except:
         print("could not execute command")
 
