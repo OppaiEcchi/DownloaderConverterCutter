@@ -7,7 +7,7 @@ from tkinter import filedialog
 window = Tk()
 window.title("Downloader/Converter/Cutter")
 window_width = 500
-window_height = 200
+window_height = 210
 screen_width = window.winfo_screenwidth()
 screen_height = window.winfo_screenheight()
 z = int((screen_width / 2) - (window_width) / 2)
@@ -70,6 +70,12 @@ def buttoncookies_press():
     inputcookies = entrycookies.get()
     try:
         os.system('cmd /c node convert-cookies.js "' + (inputcookies) + '.txt" > netscape-cookies.txt')
+    except:
+        print("could not execute command")
+def buttonytdlpupdate_press():
+    inputcookies = entrycookies.get()
+    try:
+        os.system('cmd /c yt-dlp --update')
     except:
         print("could not execute command")
 
@@ -182,6 +188,8 @@ frameytdlp4 = Frame(tabytdlp,bg="#696969")
 frameytdlp4.pack(anchor=W)
 frameytdlp5 = Frame(tabytdlp,bg="#696969")
 frameytdlp5.pack(anchor=W)
+frameytdlp6 = Frame(tabytdlp,bg="#696969")
+frameytdlp6.pack(anchor=W)
 frametwtcst1 = Frame(tabtwtcst,bg="#696969")
 frametwtcst1.pack(anchor=W)
 frametwtcst2 = Frame(tabtwtcst,bg="#696969")
@@ -270,10 +278,6 @@ labeltwtcst3.pack(side="right")
 entrytwtcst3 = Entry(frametwtcst3,width=20,font=("gothic",9),bg="#696969",fg="#000000")
 entrytwtcst3.pack(side="left")
 
-#labelstrlnk1 = Label(framestrlnk1,text="Player Path",font=("gothic",9),bg="black",fg="grey")
-#labelstrlnk1.pack(side="right")
-#entrystrlnk1 = Entry(framestrlnk1,width=20,font=("gothic",8),bg="black",fg="grey")
-#entrystrlnk1.pack(side="left")
 labelstrlnk2 = Label(framestrlnk2,text="Video Link",font=("gothic",10),bg="#696969",fg="#000000")
 labelstrlnk2.pack(side="right")
 entrystrlnk2 = Entry(framestrlnk2,width=20,font=("gothic",9),bg="#696969",fg="#000000")
@@ -327,6 +331,8 @@ labelcookies = Label(frameytdlp5,text="Convert Cookies(convert-cookies.js requir
 labelcookies.pack(side="right")
 buttoncookies = Button(frameytdlp5,text="Convert",font=("gothic",9),command=buttoncookies_press,width=19,bg="#696969",fg="#000000",activebackground="#696969",activeforeground="#000000")
 buttoncookies.pack(side="left")
+buttonytdlpupdate = Button(frameytdlp6,text="Update yt-dlp",font=("gothic",9),command=buttonytdlpupdate_press,width=19,bg="#696969",fg="#000000",activebackground="#696969",activeforeground="#000000")
+buttonytdlpupdate.pack(side="left")
 
 buttontwtcst = Button(frametwtcst4,text="Download",font=("gothic",9),command=buttontwtcst_press,width=19,bg="#696969",fg="#000000",activebackground="#696969",activeforeground="#000000")
 buttontwtcst.pack(side="left")
