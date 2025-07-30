@@ -484,8 +484,8 @@ infotext = "====================================links===========================
            "uses yt-dlp\n" \
            "\"(w/ subtitles)\" will also download \"en\" subtitles in \".srt\" format\n" \
            "\"w/o cookies\", just copy paste the link and download\n" \
-           "\"w/ cookies\", for this you need converted cookies in \".txt\" file\n" \
-           "1.for that first go to this link:\n" \
+           "\"w/ cookies (netscape-cookies.txt)\", for this you need converted cookies in \".txt\" file\n" \
+           "1.go to the link below:\n" \
            "    https://raw.githubusercontent.com/dandv/convert-chrome-cookies-to-netscape-format/master/convert-cookies.js\n" \
            "    right click anywhere on this page and select \"save as\"\n" \
            "    don't change the name\n" \
@@ -501,9 +501,10 @@ infotext = "====================================links===========================
            "6.save the file as \"(yourfilename).txt\", in the directory where this tool is\n" \
            "7.copypaste the name of the txt file(without extension) into the \"Input File\"" \
            "    and press \"Convert\", converted cookies file will have the name\n" \
-           "  \"netscape-cookies.txt\" don't change it if you want to use it in this tool\n" \
-           "now you can download videos with cookies.\n" \
-           "\n" \
+           "    \"netscape-cookies.txt\" don't change it if you want to use it in this tool\n" \
+           "    now you can download videos with cookies.\n" \
+           "\"w/ cookies (directly from browser)\" - in the \"Browser name / Input File\" type in\n" \
+           "    the name of the internet browser where the cookies should be taken from\n" \
            "\"twitcasting\":\n" \
            "uses ffmpeg\n" \
            "1.in chrome browser go to https://www.google.com/ and search for:\n" \
