@@ -35,9 +35,9 @@ def buttoncut_press():
         print("could not execute command")
 
 def buttonconcat_press():
-    outputconcat = entryconcat2.get()
+    inputfileslist, outputconcat = entryconcat1.get(), entryconcat2.get()
     try:
-        os.system('cmd /c ffmpeg -safe 0 -f concat -i list.txt -c copy "' + (outputconcat) + '"')
+        os.system('cmd /c ffmpeg -safe 0 -f concat -i "' + (inputfileslist) + '.txt" -c copy "' + (outputconcat) + '"')
     except:
         print("could not execute command")
 
